@@ -1,4 +1,4 @@
-package com.shopIt.webshop;
+package shopIt.webshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

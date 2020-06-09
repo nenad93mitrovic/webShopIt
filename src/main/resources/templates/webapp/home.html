@@ -1,11 +1,40 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-	<title>AP</title>
+	<title>Webapp</title>
 </head>
 <body>
-	<h2>Ap</h2>
+<header>
+<h2>Welcome to our store! Enjoy!</h2>
+</header>
+	
 	<hr>
-	webapp/home
-	Welcome to the another page!
+	
+	<div>
+	User: <span sec:authentication="name"></span>
+	<br>
+	Role: <span sec:authentication="principal.authorities"></span>
+	<hr>
+	
+	<div sec:authorize="hasRole('ROLE_MANAGER')">
+		<p>
+			 <a href="someOtherManagerPage">Change users data</a>(Only for Manager peeps)
+		</p>
+	</div>
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+		<p>
+			<a href="someOtherAdminPage">Update Manager access</a>(Only for Admin peeps)
+		</p>
+	</div>
+	
+	</div>
+	
+	
+	<form action="#" th:action="@{/logout}" 
+			   method="POST">
+	
+		<input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+	
+	</form>
 </body>
 </html>
